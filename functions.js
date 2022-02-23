@@ -4,9 +4,9 @@ Output:
 */
 
 export function greetUsers(customers) {
-    customers.map(customer => {
-        return `Hello ${customer.first_name} ${customer.last_name}`;
-    });
+    return customers.map(customer => 
+        `Hello ${customer.first_name} ${customer.last_name}!`
+    );
 }
 
 /* 
@@ -29,7 +29,13 @@ Output:
 */
 
 export function addAllAges(customers) {
-    return true;
+    const agesSum = customers.reduce((accumulator, currentCustomer) => {
+        const sumSoFar = accumulator + currentCustomer.age;
+
+        return sumSoFar;
+    }, 0);
+
+    return agesSum;
 }
 
 /* 
@@ -38,7 +44,14 @@ Output:
 */
 
 export function getAverageCoolFactor(customers) {
-    return true;
+    const coolSum = customers.reduce((accumulator, currentCustomer) => {
+        const sumSoFar = accumulator + currentCustomer.cool_factor;
+
+        return sumSoFar;
+    }, 0);
+    const average = coolSum / customers.length;
+
+    return average;
 }
 
 /* 
@@ -52,7 +65,16 @@ Output:
 */
 
 export function getTotalOfEachGender(customers) {
-    return true;
+    const hashMap = customers.reduce((accumulator, customer) => {
+        if(accumulator[customer.gender]) {
+            accumulator[customer.gender]++;
+        } else {
+            accumulator[customer.gender] = 1;
+        }
+        return accumulator;
+    }, {});
+
+    return hashMap;
 }
 
 /* 
@@ -66,7 +88,17 @@ Output:
 */
 
 export function getGenderBreakdownOfFordOwners(customers) {
-    return true;
+    const fordOwners = customers.filter(customer => customer.car_make === 'Ford');
+
+    const genderBreakdown = fordOwners.reduce((accumulator, currentOwner) => {
+        if(accumulator[currentOwner.gender]) {
+            accumulator[currentOwner.gender]++;
+        } else {
+            accumulator[currentOwner.gender] = 1;
+        }
+        return accumulator;
+    }, {});
+    return genderBreakdown;
 }
 
 //////////////////////////////////////////////////////////
@@ -91,7 +123,25 @@ Output:
 */
 
 export function getGenderBreakdownOfEachCar(customers) {
-    return true;
+    const carTypes = customers.reduce((accumulator, customer) => {
+        if(accumulator[customer.car_make]) {
+            return;
+        } else {
+            accumulator[customer.car_make] = customer.car_make;
+        }
+    //    const breakdowns = carTypes.reduce((accumulator, customer) => {
+    //         if(accumulator[customer.gender]) {
+    //             accumulator[customer.gender]++;
+    //         } else {
+    //             accumulator[customer.gender] = 1;
+    //         }
+    //     })
+        return accumulator ;
+    }, []);
+    return carTypes;
+    // const genderBreakdown = carTypes.reduce((accumulator, car) => {
+    //     if(accumulator[car])
+    // }, {});
 }
 
 /* 
