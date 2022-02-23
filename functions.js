@@ -4,7 +4,9 @@ Output:
 */
 
 export function greetUsers(customers) {
-    return true;
+    customers.map(customer => {
+        return `Hello ${customer.first_name} ${customer.last_name}`;
+    });
 }
 
 /* 

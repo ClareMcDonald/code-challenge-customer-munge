@@ -1,15 +1,19 @@
-// IMPORT MODULES under test here:
+ // IMPORT MODULES under test here:
 import { 
+    greetUsers,
     greetUsersOverAge60,
 } from '../functions.js';
 import customers from './data.js';
 
 const { test, skip } = QUnit;
 
-skip('greetUsers', (expect) => {
-    const expected = true;
+test('greetUsers', (expect) => {
+    const expected = [
+        'Hello Suzi Summerson!',
+        'Hello Boot Penton!'
+    ];
 
-    const actual = greetUsers();
+    const actual = greetUsers(customers);
 
     expect.equal(actual, expected);
 });
