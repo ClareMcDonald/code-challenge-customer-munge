@@ -88,7 +88,17 @@ Output:
 */
 
 export function getGenderBreakdownOfFordOwners(customers) {
-    return true;
+    const fordOwners = customers.filter(customer => customer.car_make === 'Ford');
+
+    const genderBreakdown = fordOwners.reduce((accumulator, currentOwner) => {
+        if(accumulator[currentOwner.gender]) {
+            accumulator[currentOwner.gender]++;
+        } else {
+            accumulator[currentOwner.gender] = 1;
+        }
+        return accumulator;
+    }, {});
+    return genderBreakdown;
 }
 
 //////////////////////////////////////////////////////////
