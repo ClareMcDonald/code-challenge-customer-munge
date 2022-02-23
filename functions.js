@@ -34,6 +34,7 @@ export function addAllAges(customers) {
 
         return sumSoFar;
     }, 0);
+
     return agesSum;
 }
 
@@ -43,7 +44,14 @@ Output:
 */
 
 export function getAverageCoolFactor(customers) {
-    return true;
+    const coolSum = customers.reduce((accumulator, currentCustomer) => {
+        const sumSoFar = accumulator + currentCustomer.cool_factor;
+
+        return sumSoFar;
+    }, 0);
+    const average = coolSum / customers.length;
+
+    return average;
 }
 
 /* 
