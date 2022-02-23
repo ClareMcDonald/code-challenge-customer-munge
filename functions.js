@@ -29,7 +29,12 @@ Output:
 */
 
 export function addAllAges(customers) {
-    return true;
+    const agesSum = customers.reduce((accumulator, currentCustomer) => {
+        const sumSoFar = accumulator + currentCustomer.age;
+
+        return sumSoFar;
+    }, 0);
+    return agesSum;
 }
 
 /* 
