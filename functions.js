@@ -123,7 +123,25 @@ Output:
 */
 
 export function getGenderBreakdownOfEachCar(customers) {
-    return true;
+    const carTypes = customers.reduce((accumulator, customer) => {
+        if(accumulator[customer.car_make]) {
+            return;
+        } else {
+            accumulator[customer.car_make] = customer.car_make;
+        }
+    //    const breakdowns = carTypes.reduce((accumulator, customer) => {
+    //         if(accumulator[customer.gender]) {
+    //             accumulator[customer.gender]++;
+    //         } else {
+    //             accumulator[customer.gender] = 1;
+    //         }
+    //     })
+        return accumulator ;
+    }, []);
+    return carTypes;
+    // const genderBreakdown = carTypes.reduce((accumulator, car) => {
+    //     if(accumulator[car])
+    // }, {});
 }
 
 /* 
