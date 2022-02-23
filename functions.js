@@ -205,8 +205,30 @@ Output:
 }
 */
 
+function getBracket(customer) {
+    return (Math.floor(customer.age / 10) * 10);
+}
+
 export function getCoolFactorsByAgeBracket(customers) {
-    return true;
+    const ageBracketCoolFactorArrayMap = customers((acc, curr) => {
+        const bracket = getBracket(curr);
+
+        if (acc[bracket]) {
+            acc[bracket].push(curr.cool_factor);
+        } else {
+            acc[bracket] = [curr.cool_factor];
+        }
+        return acc;
+    }, {});
+
+    for(let key of Object.keys(ageBracketCoolFactorArrayMap) {
+        const coolFactorsArray = ageBracketCoolFactorArrayMap[key4];
+
+        const sumCoolFactor = coolFactorsArray.reduce((acc, curr) => acc + curr, 0);
+
+        const average = sumCoolFactor / coolFactorsArray.length;
+
+   }
 }
 
 
